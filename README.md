@@ -15,7 +15,6 @@
 - **Project:** Mad Libs CLI
 
 ### 3. Implementing Logic in the CLI App (30 min)
-- Handling user input: Reading and parsing
 - Basic error handling (`expect`, `match`, `Result`)
 - Writing simple functions to process data
 - **Project:** Pomodoro App
@@ -181,7 +180,7 @@ If you need to modify a variable, you must explicitly declare it as mut.
 ## Basic data types (String, u32, bool)
 Rust is a statically typed language, meaning every variable has a specific type known at compile time. Here, we'll focus on three fundamental types: `String`, `u32`, and `bool`.
 String Types in Rust
-
+### String
 Rust has two primary ways to store text:
 
 - String literals (&str) – Fixed-length text, stored in binary.
@@ -261,7 +260,7 @@ fn main() {
 ```
 `if` checks whether is_admin is true or false.
 ***
-## Taking user input with `std::io::stdin()`
+### Taking user input with `std::io::stdin()`
 Rust reads user input using std::io::stdin(), which allows the program to get input from the keyboard.
 
 Let's write a simple program that asks for the user's name and prints it.
@@ -330,4 +329,6 @@ How This Works
 - `match` checks if parsing is successful `(Ok(num))` or `fails (Err(_))`.
 - If input is valid, it prints the number.
 - If input is invalid, it shows an error without crashing.
-
+***
+## Implementing Logic in the CLI App
+### Handling user input: Reading and parsing
