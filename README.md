@@ -331,4 +331,66 @@ How This Works
 - If input is invalid, it shows an error without crashing.
 ***
 ## Implementing Logic in the CLI App
-### Handling user input: Reading and parsing
+### Error handling
+ 
+Error handling in Rust is based on the `Result<T, E>` and `Option<T>` types, along with constructs like `expect`, `match`, and the `?` operator. Below are some beginner-friendly explanations with examples.
+
+#### Using expect() for Quick Error Handling
+
+`expect()` is a quick way to handle errors. If an operation fails, it will print an error message and panic (crash the program).
+Example: Using expect() to Read a File
+```rust
+use std::fs;
+
+fn main() {
+    let content = fs::read_to_string("example.txt").expect("Failed to read the file");
+    println!("File content:\n{}", content);
+}
+```
+- 🔹 If "example.txt" doesn't exist, Rust will panic and print:
+- thread 'main' panicked at 'Failed to read the file: No such file or directory'
+
+#### Using match to Handle Errors Gracefully
+
+`match` allows you to explicitly handle success `(Ok)` and `failure (Err)` cases.
+Example: Parsing a Number with match
+```rust
+fn main() {
+    let input = "42a";  // Invalid number
+
+    match input.parse::<i32>() {
+        Ok(num) => println!("Parsed number: {}", num),
+        Err(e) => println!("Error parsing number: {}", e),
+    }
+}
+```
+
+-🔹 This prevents a crash and prints:
+Error parsing number: invalid digit found in string
+
+-✅ Best for: When you need fine-grained error handling.
+
+#### Using ? Operator for Simpler Error Propagation
+
+Instead of handling every error with match, the ? operator propagates errors automatically.
+Example: Simplifying read_file()
+
+```rust
+use std::fs;
+use std::io;
+
+fn read_file(path: &str) -> Result<String, io::Error> {
+    fs::read_to_string(path) // Automatically returns `Err` if it fails
+}
+
+fn main() {
+    match read_file("example.txt") {
+        Ok(content) => println!("File content:\n{}", content),
+        Err(e) => println!("Error reading file: {}", e),
+    }
+}
+```
+
+- 🔹 ? makes error handling shorter and cleaner.
+
+- ✅ Best for: Making functions readable while allowing errors to be handled by the caller.
