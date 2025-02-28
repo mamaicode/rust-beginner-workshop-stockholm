@@ -1,5 +1,9 @@
 # Rust Workshop for Beginners
 
+DevFest Sweden Rustacean workshop, Feb 27, 2025
+Introductory workshop to Rust as a programming language.
+
+
 ### 1. Introduction to Rust (15 min)
 - **What is Rust? Why is it popular?**
 - **Key features:** Safety, performance, concurrency
@@ -294,7 +298,7 @@ fn main() {
 
     println!("Enter your age:");
     io::stdin().read_line(&mut age).expect("Failed to read input");
-
+ 
     let age: u32 = age.trim().parse().expect("Please enter a valid number");
 
     println!("You are {} years old.", age);
@@ -394,3 +398,4 @@ fn main() {
 - 🔹 ? makes error handling shorter and cleaner.
 
 - ✅ Best for: Making functions readable while allowing errors to be handled by the caller.
+***
